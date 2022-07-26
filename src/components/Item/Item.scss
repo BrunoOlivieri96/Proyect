@@ -26,12 +26,12 @@
           line-height: 16px;
           width: 50px;
           text-align: center;
-          background: #00a650;
+          background: orange;
           color: white;
       }
       
       button {
-          background: none;
+          background: orange;
           border: none;
           margin-right: 5px;
       }
@@ -43,7 +43,7 @@
   }
 }
 .detail-product > p:nth-of-type(1) {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid black;
   margin: 0;
   padding: 20px 0px;
   text-transform: uppercase;
@@ -70,5 +70,5 @@
 h1 {
   font-size: 25px;
   padding: 1px;
-  color: blue;
+  color: orange;
 }
