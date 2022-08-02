@@ -20,14 +20,14 @@ const Product = ({data}) => {
                 <img className='detail-image' src={`/assets/${image}`} alt="Imagen producto" />
                     <div className='content'>
                     <h2>{title}</h2>
-                    <h3>Llega Hoy</h3>
+                    <h3>Se envia HOY!</h3>
                     <li> {features.one}</li>
                     <li> {features.two}</li>
                     <li> {features.three}</li>
                     <li> {features.four}</li>
                     <li> {features.five}</li>
                     <li> {features.six}</li>
-                    <h4><AiOutlineTag /> Stock disponible: {stock}</h4>
+                    <h4><AiOutlineTag /> Disponible: {stock}</h4>
                     <h1>$ {price}</h1>
                     <ItemCount initial={1} stock={stock} onAdd={onAdd}/>
                 </div>
