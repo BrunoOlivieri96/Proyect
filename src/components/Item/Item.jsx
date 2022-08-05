@@ -20,7 +20,6 @@ const Item = ({data}) => {
                 <p><AiTwotoneCar />Los envios son sin costo</p>
                 <p><AiOutlineTag />Disponible: {stock}</p>
                 <h1>$ {price}</h1>
-                <ItemCount initial={1} stock={stock}/>
             </div>
             </Link>
         </div> 
