@@ -1,6 +1,5 @@
 import './Item.scss'
 import { AiFillHeart, AiOutlineCreditCard, AiTwotoneCar, AiOutlineTag } from "react-icons/ai" 
-import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 const Item = ({data}) => {
  
