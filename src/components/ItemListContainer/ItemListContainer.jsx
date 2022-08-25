@@ -1,39 +1,35 @@
 import { useEffect, useState } from "react"
 import ItemList from "../ItemList/ItemList"
 import './ItemListContainer.scss'
-import products from '../../utils/products.mock'
 import { useParams } from 'react-router-dom'
-import { collection,getDocs } from "firebase/firestore"
+import { collection,getDocs,query,where } from "firebase/firestore"
 import db from "../../firebaseConfig"
 
 const ItemListContainer = ({article}) => {
 
-    const [listProduct, setlistProduct] = useState([])
+    const [listProduct, setListProduct] = useState([])
     const {categoryid} = useParams()
-    const filterByCategory = products.filter((products) => products.category === categoryid)
+    
+    useEffect(() => {
+        const productsCollection = collection(db, "productos")
+        if (categoryid) {
+            const cons = query(productsCollection, where("category", "==", categoryid))
+            getDocs(cons).then(({docs}) => {
+                setListProduct(docs.map((doc) => ({id: doc.id, ...doc.data() })))
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else {
+            getDocs(productsCollection).then(({docs}) => {
+                setListProduct(docs.map((doc) => ({...doc.data(), id: doc.id})))
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+    }, [categoryid])
 
     
-    const getProducts = async () => {
-        const productCollection = collection(db, 'productos')
-        const productSnapshot = await getDocs (productCollection)
-        const producList = productSnapshot.docs.map ( (doc) =>{
-                let product = doc.data()
-                product.id  = doc.id
-                return product
-
-
-        })
-        return producList
-    }
-  
-    useEffect(() => {
-        getProducts ()
-        .then((res) => {
-            setlistProduct(res)
-        })
-     
-    }, )
-
+   
     return(
         <div className='list-products'>
         <h2>{article}</h2>
